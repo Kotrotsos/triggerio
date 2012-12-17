@@ -2,6 +2,8 @@
 
 
 
-    exports.logg =  function(a) {
-		console.log('you said ', a)
+exports.action =  {
+	log: function(a) {
+		console.log("you said ", a);
 	}
+};

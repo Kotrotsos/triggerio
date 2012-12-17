@@ -1,14 +1,8 @@
-var restify = require('restify');
+var express = require('express');
+var app = express();
 
- function send(req, res, next) {
-   res.send('hello ' + req.params.name);
-   return next();
- }
+require('./routes')(app);
 
-var app = restify.createServer();
 
-require('./routes')(app, send);
-
-app.listen(8080, function() {
-  console.log('%s listening at %s', app.name, app.url);
-});
+console.log('Trigger is now listening on 0.0.0.0:3000');
+app.listen(3000);

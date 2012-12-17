@@ -1,22 +1,12 @@
-var restify = require('restify');
-var cc = require('./controller.js');
 
-module.exports = function(app, send) {
+var trigger = require('./controller.js');
 
-	app.post('/hello', function create(req, res, next) {
-		cc.logg('hello');
-		res.send(201, Math.random().toString(36).substr(3, 8));
-		
-		return next();
+module.exports = function(app) {
+
+	
+	app.get('/action/:name', function(req, res){
+	  res.send('hello world2');
+	  console.log(req)
 	});
-
-	app.put('/hello', send);
-	app.get('/hello/:name', send);
-	app.head('/hello/:name', send);
-	app.del('hello/:name', function rm(req, res, next) {
-		res.send(204);
-		return next();
-	});
-
 
 }
