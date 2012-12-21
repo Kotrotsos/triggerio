@@ -1,12 +1,21 @@
 
 var logger = require('../actions/log');
+var runner = require('../runner/runner')
 
-module.exports = function(app) {
+
+
+module.exports = function(server) {
 
 	
-	app.get('/action/:name', function(req, res){
-	  res.send('hello world2');
-	  logger.log("hello")
+	server.get('/action/:name', function(req, res){
+      res.send(req.params.name);
+      
+      conditions =  {all: [{name: "name", operator: "present", value: ""}, {name: "age", operator: "greaterThanEqual", value: "21"}]};
+      actions = [{name: "action-select", value: "giveDrink", fields: [{name: "drinkType", value: "martini"}]}];
+      data = {name: "Joe", age: 22};
+      
+      runner.rules.run(conditions, actions, data);
+
 	});
 
 }

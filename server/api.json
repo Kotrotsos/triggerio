@@ -1,0 +1,22 @@
+{ 
+    "data": {
+        "ControllerName": [{
+            "resource": "ControllerName",
+            "http_method": "GET",
+            "uri": "\/controller_name",
+            "params": [],
+            "doc_comment": {
+                "description": "List all the things",
+                "tags": {
+                    "inputParam": {
+                        "asdf": {
+                            "description": "Describe what is the expected value",
+                            "optional": true,
+                            "value":"sss"
+                        }
+                    }
+                }
+            }
+        }]
+    }
+}
