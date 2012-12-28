@@ -36,6 +36,7 @@ var global = this;
     }
   };
 
+
   var RuleEngine = global.RuleEngine = function RuleEngine(rule) {
     rule = rule || {};
     this.operators = {};
@@ -156,8 +157,10 @@ var global = this;
       var next = function() {
         try {
           currentNode = nodes[i];
-          i++;
+          i++;            
+          
           if (currentNode) {
+
             handleNode(currentNode, obj, engine, done);
           }
           else {

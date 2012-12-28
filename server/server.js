@@ -1,19 +1,29 @@
-var numeral = require('numeral');
+//var numeral = require('numeral');
 var express = require('express');
-var S = require('string');
-var ss = require('simple-statistics');
+//var S = require('string');
+//var ss = require('simple-statistics');
 var server = express();
-var classifier = require('classifier');
+//var classifier = require('classifier');
+//var config = require('./config')
+async = require('async')
 
-/*
-var redis = require("redis"),
-       db = redis.createClient();
+EE = require('events');
+events = new EE.EventEmitter();
+
+
+
+redis = require("redis"),
+   db = redis.createClient();
 
 db.on("error", function (err) {
    console.log("Redis Error " + err);
 });
 
+db.select(1,function() {
+  console.log('REDIS: Primary datastore selected')
+})
 
+/*
 var bayes = new classifier.Bayesian({
   backend: {
     type: 'Redis',
@@ -36,10 +46,9 @@ require('./routes/action-routes')(server);
 
 /*
 db.incr("launched");
-db.get("launched", function (err, reply) {
-    console.log("launch: #", reply.toString());
-});
 */
+
+
 server.configure(function(){
   server.use('/media', express.static(__dirname + '/media'));
   server.use(express.static(__dirname + '/public'));

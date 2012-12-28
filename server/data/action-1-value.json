@@ -1,0 +1,12 @@
+[{
+    "name": "action-select",
+    "value": "giveDrink",
+    "fields": [{
+        "name": "drinkType",
+        "value": "martini"
+    }, {
+        "name": "brand",
+        "value": "cowala"
+    }
+    ]
+}]

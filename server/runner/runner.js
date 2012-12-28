@@ -1,20 +1,22 @@
 var ruleEngine = require('../lib/re');
-
+var actionsAdapter = require('../actions/actions')
+var util = require('util');
       
 
 exports.rules =  {
-    run: function(conditions, actions, dataAdapter) {
-       
-        var Rule = new ruleEngine({
-            conditions: conditions,
-            actions: actions
-        });
+    run: function(conditions, actions, fact, callback) {
+                       
+        var ruleObject = {
+             conditions: JSON.parse(conditions),
+             actions: JSON.parse(actions)
+            },
 
+            fact = JSON.parse(fact);
+
+        var engine = new ruleEngine(ruleObject);
+        //console.log(util.inspect(engine, true, null,true));
         
-        var actionsAdapter = {giveDrink: function(data) { console.log("Gave user a " + data.find("drinkType")); } };
-
-
-        Rule.run(dataAdapter, actionsAdapter, function(){ console.log('hello')});
-
+        engine.run(fact, actionsAdapter);
+        callback();
     }
 };
