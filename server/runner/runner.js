@@ -7,16 +7,15 @@ exports.rules =  {
     run: function(conditions, actions, fact, callback) {
                        
         var ruleObject = {
-             conditions: JSON.parse(conditions),
-             actions: JSON.parse(actions)
-            },
-
-            fact = JSON.parse(fact);
+             conditions: conditions,
+             actions:  actions
+            }
 
         var engine = new ruleEngine(ruleObject);
-        //console.log(util.inspect(engine, true, null,true));
         
-        engine.run(fact, actionsAdapter);
+        engine.run(fact, actionsAdapter, function(a) { 
+            
+        } );
         callback();
     }
 };

@@ -1,12 +1,18 @@
 var config = {}
 
-config.twitter = {};
+config.postgres = {};
 config.redis = {};
+config.log = {};
 config.web = {};
 
 config.default_stuff =  ['red','green','blue','apple','yellow','orange','politics'];
-config.twitter.user_name = process.env.TWITTER_USER || 'username';
-config.twitter.password=  process.env.TWITTER_PASSWORD || 'password';
+
+config.postgres.connectionstring = "tcp://postgres:c0nc3pt@localhost:5432/trigger";
+
+ 
+
+config.log.level = "error";
+
 config.redis.uri = process.env.DUOSTACK_DB_REDIS;
 config.redis.host = 'hostname';
 config.redis.port = 6379;

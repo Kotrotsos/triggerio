@@ -45,4 +45,11 @@ delete: /widget/14              .. delete widget 14
 
 
 
+STAGES
+
+An action goes from created to staged to finished. Where created is the moment the action is initiated, 
+staged is the moment the rule is running, and finished is when the action has finished running. The GUID serves the 
+purpose of the unique ID of the action. 
+
+
 */

@@ -106,11 +106,22 @@ var global = this;
     },
 
     runActions: function(actionsAdapter) {
-      for(var i=0; i < this.actions.length; i++) {
-        var actionData = this.actions[i];
+
+       db.HMSET("log:trigger:" + this.actions['guid'], {
+                       "status": "staged", 
+                       "staged_at": "" + new Date(),
+                       "staged_at_ms": "" + new Date().getTime()
+        });
+
+      for(var i=0; i < this.actions['actions'].length; i++) {
+        var actionData = this.actions['actions'][i];
+
+        // add the padded guid to the actionAdapter data
+        actionData.fields.push({name: "guid", value: this.actions['guid'] + '-' + i})
+
         var actionName = actionData.value;
         var actionFunction = actionsAdapter[actionName]
-        if(actionFunction) { actionFunction(new Finder(actionData)); }
+        if(actionFunction) { actionFunction(new Finder(actionData)); }        
       }
     }
   };
